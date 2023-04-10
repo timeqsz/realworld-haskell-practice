@@ -7,14 +7,14 @@ data Direction =    DLeft
                  |  DStraight
               deriving Show
 
-caculateDirection :: Point -> Point -> Point -> Direction
-caculateDirection (Point ax ay) (Point bx by) (Point cx cy) 
+calculateDirection :: Point -> Point -> Point -> Direction
+calculateDirection (Point ax ay) (Point bx by) (Point cx cy) 
     | degreeAB == degreeBC = DStraight
     | degreeAB < degreeBC = DLeft 
     | otherwise = DRight
     where degreeAB = (by - ay) / (bx - ax)
           degreeBC = (cy - by) / (cx - bx)
 
-caculateDirectionSequence :: [Point] -> [Direction]
-caculateDirectionSequence [x,y,z] = [caculateDirection x y z]
-caculateDirectionSequence (x:xs) = caculateDirection x (head xs) (xs !! 1) : caculateDirectionSequence xs
+calculateDirectionSequence :: [Point] -> [Direction]
+calculateDirectionSequence [x,y,z] = [calculateDirection x y z]
+calculateDirectionSequence (x:xs) = calculateDirection x (head xs) (xs !! 1) : calculateDirectionSequence xs
