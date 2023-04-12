@@ -9,11 +9,10 @@ data Direction =    DLeft
 
 calculateDirection :: Point -> Point -> Point -> Direction
 calculateDirection (Point ax ay) (Point bx by) (Point cx cy) 
-    | degreeAB == degreeBC = DStraight
-    | degreeAB < degreeBC = DLeft 
+    | crossproduct == 0 = DStraight
+    | crossproduct > 0 = DLeft 
     | otherwise = DRight
-    where degreeAB = (by - ay) / (bx - ax)
-          degreeBC = (cy - by) / (cx - bx)
+    where crossproduct = (cx - ax) * (cy - by) - (cx - bx) * (cy - ay)
 
 calculateDirectionSequence :: [Point] -> [Direction]
 calculateDirectionSequence [x,y,z] = [calculateDirection x y z]
