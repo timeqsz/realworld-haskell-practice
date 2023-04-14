@@ -1,2 +1,2 @@
 # realworld-haskell-practice
-realworld Haskell practigit initce
+realworld Haskell practice
